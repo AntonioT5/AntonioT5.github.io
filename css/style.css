@@ -114,6 +114,25 @@ h2::before { content: "// "; color: var(--accent); }
   transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
 }
 
+.badge {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 2px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+.project-card .highlight {
+  margin-top: 14px;
+  padding-left: 12px;
+  border-left: 2px solid var(--accent);
+  font-size: 0.85rem;
+  color: var(--text);
+}
+
 .project-card:hover {
   transform: translateY(-6px);
   border-color: var(--accent);
@@ -168,10 +187,6 @@ footer {
 }
 
 .more-card {
-  grid-column: 1 / -1;  
-  justify-self: center;
-  width: 100%;
-  max-width: 320px;
   display: flex;
   align-items: center;
   justify-content: center;
