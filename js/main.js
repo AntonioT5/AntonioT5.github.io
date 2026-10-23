@@ -76,3 +76,51 @@ copyBtn.addEventListener('click', async () => {
   }
   setTimeout(()=>{copyBtn.textContent='Copy email';}, 2000)
 });
+
+const navLinks = document.querySelectorAll('.nav nav a');
+const trackedSections = document.querySelectorAll('main section');
+
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      navLinks.forEach((link) => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+      });
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+
+trackedSections.forEach((section) => navObserver.observe(section));
+
+
+const scrollBar = document.querySelector('.scroll-bar');
+
+function updateScrollBar() {
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  const fraction = max > 0 ? window.scrollY / max : 0;
+  scrollBar.style.transform = 'scaleX(' + fraction + ')';
+}
+
+window.addEventListener('scroll', updateScrollBar, { passive: true });
+updateScrollBar();
+
+document.querySelectorAll('.project-grid > *').forEach((card, i) => {
+  card.style.setProperty('--i', i);
+});
+
+const magnets = document.querySelectorAll('.hero .btn');
+
+window.addEventListener('mousemove', (e) => {
+  magnets.forEach((btn) => {
+    const rect = btn.getBoundingClientRect();
+    const dx = e.clientX - (rect.left + rect.width / 2);
+    const dy = e.clientY - (rect.top + rect.height / 2);
+    const distance = Math.hypot(dx, dy);
+
+    if (distance < 120) {
+      btn.style.translate = dx * 0.3 + 'px ' + dy * 0.3 + 'px';
+    } else {
+      btn.style.translate = '0 0';
+    }
+  });
+});
