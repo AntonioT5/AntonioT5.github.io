@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html data-theme="dark" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Antonio Trajkovski | Software Engineer</title>
     <meta name="description" content="Portfolio of Antonio Trajkovski, Software Engineering student at FINKI.">
     <link rel="stylesheet" href="css/style.css">
+
+    <script>
+      try {
+        const saved = localStorage.getItem('theme');
+        if (saved) document.documentElement.dataset.theme = saved;
+      } catch (e) {}
+    </script>
+
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <meta property="og:title" content="Antonio Trajkovski | Software Engineer">
     <meta property="og:description" content="Software Engineering student at FINKI. Backend projects, RAG systems and more.">
@@ -23,6 +31,7 @@
       <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
+      <button class="theme-toggle" aria-label="Toggle light and dark theme"></button>
     </nav>
   </header>
 
