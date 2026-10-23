@@ -110,7 +110,8 @@ document.querySelectorAll('.project-grid > *').forEach((card, i) => {
 
 const magnets = document.querySelectorAll('.hero .btn');
 
-window.addEventListener('mousemove', (e) => {
+if (window.matchMedia('(hover: hover)').matches){
+  window.addEventListener('mousemove', (e) => {
   magnets.forEach((btn) => {
     const rect = btn.getBoundingClientRect();
     const dx = e.clientX - (rect.left + rect.width / 2);
@@ -124,3 +125,4 @@ window.addEventListener('mousemove', (e) => {
     }
   });
 });
+}

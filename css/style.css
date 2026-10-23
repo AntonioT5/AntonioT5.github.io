@@ -63,7 +63,9 @@ h2::before { content: "// "; color: var(--accent); }
 
 .nav nav { display: flex; gap: 28px; }
 .nav nav a { color: var(--muted); font-size: 0.95rem; transition: color 0.2s; }
-.nav nav a:hover { color: var(--accent); }
+@media (hover: hover) {
+  .nav nav a:hover { color: var(--accent); }
+}
 .nav nav a.active { color: var(--accent); }
 
 .hero {
