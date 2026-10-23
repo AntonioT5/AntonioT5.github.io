@@ -258,3 +258,18 @@ footer {
 
 .theme-toggle::before { content: "☀"; }
 :root[data-theme="light"] .theme-toggle::before { content: "☾"; }
+
+.email-text { margin-top: 20px; }
+.copy-btn {
+  margin-left: 10px;
+  padding: 4px 12px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.copy-btn:hover { border-color: var(--accent); color: var(--accent); }

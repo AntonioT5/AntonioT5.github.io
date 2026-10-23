@@ -64,3 +64,15 @@ themeBtn.addEventListener('click', () => {
   root.dataset.theme = next;
   try { localStorage.setItem('theme', next); } catch (e) {}
 });
+
+const copyBtn = document.querySelector('.copy-btn');
+
+copyBtn.addEventListener('click', async () => {
+  try {
+    await navigator.clipboard.writeText(copyBtn.dataset.email);
+    copyBtn.textContent = 'Copied!';
+  } catch (e) {
+    copyBtn.textContent = 'Copy failed';
+  }
+  setTimeout(()=>{copyBtn.textContent='Copy email';}, 2000)
+});
