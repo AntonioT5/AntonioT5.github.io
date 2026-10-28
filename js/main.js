@@ -61,8 +61,10 @@ const themeBtn = document.querySelector('.theme-toggle');
 themeBtn.addEventListener('click', () => {
   const root = document.documentElement;
   const next = root.dataset.theme === 'light' ? 'dark' : 'light';
+  root.classList.add('theme-fade');
   root.dataset.theme = next;
   try { localStorage.setItem('theme', next); } catch (e) {}
+  setTimeout(() => root.classList.remove('theme-fade'), 500);
 });
 
 const copyBtn = document.querySelector('.copy-btn');
@@ -118,7 +120,7 @@ if (window.matchMedia('(hover: hover)').matches){
     const dy = e.clientY - (rect.top + rect.height / 2);
     const distance = Math.hypot(dx, dy);
 
-    if (distance < 120) {
+    if (distance < 70) {
       btn.style.translate = dx * 0.3 + 'px ' + dy * 0.3 + 'px';
     } else {
       btn.style.translate = '0 0';
@@ -126,3 +128,8 @@ if (window.matchMedia('(hover: hover)').matches){
   });
 });
 }
+
+document.querySelectorAll('.skill-groups > *').forEach((group, i) => {
+  group.style.setProperty('--i', i);
+});
+

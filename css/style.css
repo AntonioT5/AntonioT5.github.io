@@ -173,17 +173,73 @@ h2::before { content: "// "; color: var(--accent); }
 
 #about p { max-width: 700px; color: var(--muted); font-size: 1.1rem; }
 
-.skill-list { list-style: none; display: flex; flex-wrap: wrap; gap: 12px; }
+.skill-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.skill-group {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  align-items: center;
+  gap: 24px;
+  padding: 20px 28px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+.skill-group:hover {
+  border-color: var(--accent);
+  box-shadow: 0 10px 40px rgba(var(--accent-rgb), 0.1);
+}
+
+.skill-group h3 {
+  font-size: 1rem;
+  color: var(--accent);
+  margin: 0;
+}
+
+@media (max-width: 800px) {
+  .skill-group {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+.skill-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
 .skill-list li {
   padding: 8px 18px;
-  background: var(--surface);
+  background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 999px;
   font-family: var(--font-mono);
   font-size: 0.85rem;
-  transition: border-color 0.2s, color 0.2s;
+  transition: border-color 0.2s, color 0.2s, transform 0.2s;
 }
-.skill-list li:hover { border-color: var(--accent); color: var(--accent); }
+.skill-list li:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.reveal.visible .project-grid > *,
+.reveal.visible .skill-groups > * {
+  animation: card-in 0.6s ease backwards;
+  animation-delay: calc(var(--i, 0) * 120ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal.visible .project-grid > *,
+  .reveal.visible .skill-groups > * { animation: none; }
+}
 
 #contact p { color: var(--muted); margin-bottom: 20px; }
 #contact a {
@@ -342,3 +398,23 @@ footer {
 }
 
 .btn { transition: transform 0.2s, box-shadow 0.2s, translate 0.15s ease-out; }
+
+.theme-fade,
+.theme-fade *,
+.theme-fade *::before,
+.theme-fade *::after {
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease !important;
+}
+
+.prompt {
+  display: inline-block;
+  animation: nudge 1.2s ease-in-out infinite;
+}
+
+@keyframes nudge {
+  50% { transform: translateX(5px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prompt { animation: none; }
+}
